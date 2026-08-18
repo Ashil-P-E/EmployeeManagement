@@ -1,11 +1,11 @@
 name: C++ CI
 
 on:
-  push:
+  pull_request:
     branches:
       - main
-      - feature/**
-  pull_request:
+
+  push:
     branches:
       - main
 
@@ -17,8 +17,8 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v6
 
-      - name: Install CMake
-        run: sudo apt-get update && sudo apt-get install -y cmake
+      - name: Check CMake
+        run: cmake --version
 
       - name: Configure CMake
         run: cmake -S . -B build
