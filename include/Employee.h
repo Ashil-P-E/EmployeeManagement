@@ -16,6 +16,7 @@ public:
     int getId() const;
     std::string getName() const;
     double getSalary() const;
+    void display() const;
 };
 
 #endif
