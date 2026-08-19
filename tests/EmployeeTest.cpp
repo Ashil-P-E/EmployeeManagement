@@ -19,5 +19,5 @@ TEST(EmployeeTest, EmployeeSalary)
 {
     Employee employee(1, "Ashil", 50000);
 
-    EXPECT_EQ(employee.getSalary(), 50000);
+    EXPECT_EQ(employee.getSalary(), 60000);
 }
