@@ -37,7 +37,7 @@ jobs:
             build/EmployeeManagement
             build/EmployeeTest
 
-    deploy:
+  deploy:
     needs: build-and-test
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
