@@ -28,3 +28,11 @@ jobs:
 
       - name: Run tests
         run: ctest --test-dir build --output-on-failure
+
+      - name: Upload application artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: EmployeeManagement-build
+          path: |
+            build/EmployeeManagement
+            build/EmployeeTest  
