@@ -37,10 +37,11 @@ jobs:
             build/EmployeeManagement
             build/EmployeeTest
 
-  deploy:
+    deploy:
     needs: build-and-test
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    environment: staging
 
     steps:
       - name: Download application artifact
@@ -53,4 +54,4 @@ jobs:
         run: |
           echo "Deploying EmployeeManagement to staging..."
           ls -la deploy
-          echo "Deployment successful!"  
+          echo "Deployment successful!"
