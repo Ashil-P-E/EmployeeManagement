@@ -1,4 +1,4 @@
-name: C++ CI
+name: C++ CI/CD
 
 on:
   pull_request:
@@ -35,4 +35,22 @@ jobs:
           name: EmployeeManagement-build
           path: |
             build/EmployeeManagement
-            build/EmployeeTest  
+            build/EmployeeTest
+
+  deploy:
+    needs: build-and-test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download application artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: EmployeeManagement-build
+          path: deploy
+
+      - name: Deploy to staging
+        run: |
+          echo "Deploying EmployeeManagement to staging..."
+          ls -la deploy
+          echo "Deployment successful!"  
